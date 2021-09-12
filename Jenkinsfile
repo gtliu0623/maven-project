@@ -1,11 +1,11 @@
 pipeline {
-    
     agent any
     tools {
         maven 'local maven'
     }
     
- 	stage('Build') {
+    stages {
+        stage('Build') {
             steps {
                 echo "Building....."
                 sh 'mvn clean package'
@@ -13,10 +13,11 @@ pipeline {
             post {
                 success {
                     echo "開始存檔"
-                    arlchiveArtifacs artifacts '**/target/*.war'
+                    archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
 
+        }   
     }
-
+ 	
 }
