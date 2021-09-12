@@ -1,6 +1,9 @@
 pipeline {
     
     agent any
+    tools {
+        maven 'local maven'
+    }
     
  	stage('Build') {
             steps {
@@ -13,7 +16,6 @@ pipeline {
                     arlchiveArtifacs artifacts '**/target/*.war'
                 }
             }
-        }
 
     }
 
