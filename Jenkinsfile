@@ -26,7 +26,7 @@ pipeline {
 
         stage('Deploy to production') {
             steps {
-                timeout(times: 5, unit: 'DAYS') {
+                timeout(time: 5, unit: 'DAYS') {
                     input message: '是否佈署到生產環境'
                 }
 
