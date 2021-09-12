@@ -20,7 +20,7 @@ pipeline {
 
         stage('Deploy to staging') {
             steps {
-                build job: 'maven project deploy-to-staging'
+                build job: 'pipeline deploy-to-staging'
             }
         }
 
@@ -30,7 +30,7 @@ pipeline {
                     input message: '是否佈署到生產環境'
                 }
 
-                build job: 'maven project deploy-to-production'
+                build job: 'pipeline deploy-to-production'
             }
             post {
                 success {
