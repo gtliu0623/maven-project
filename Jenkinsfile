@@ -23,6 +23,26 @@ pipeline {
                 build job: 'maven project deploy-to-staging'
             }
         }
+
+        stage('Deploy to production') {
+            steps {
+                timeout(times: 5, unit: 'DAYS') {
+                    input message '是否佈署到生產環境'
+                }
+
+                build job: 'deploy-to-production'
+            }
+            post {
+                success {
+                    echo '代碼成功佈署到生產環境'
+                }
+
+                failure {
+                    echo '佈署失敗'
+                }
+            }
+        }
+        
     }
  	
 }
