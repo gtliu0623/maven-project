@@ -27,10 +27,10 @@ pipeline {
         stage('Deploy to production') {
             steps {
                 timeout(times: 5, unit: 'DAYS') {
-                    input message '是否佈署到生產環境'
+                    input message: '是否佈署到生產環境'
                 }
 
-                build job: 'deploy-to-production'
+                build job: 'maven project deploy-to-production'
             }
             post {
                 success {
@@ -42,7 +42,7 @@ pipeline {
                 }
             }
         }
-        
+
     }
  	
 }
